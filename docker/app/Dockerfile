@@ -10,7 +10,10 @@ RUN apt-get update \
     libmcrypt-dev \
     libpng-dev \
     libfontconfig1 \
-    libxrender1
+    libxrender1 \
+    iputils-ping \
+    net-tools \
+    dnsutils
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
@@ -31,4 +34,3 @@ RUN npm --version
 WORKDIR /src
 ADD . /src/storage
 RUN chown -R www-data:www-data /src/storage
-RUN apt-get install iputils-ping net-tools dnsutils

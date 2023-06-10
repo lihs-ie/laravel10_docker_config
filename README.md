@@ -1,4 +1,4 @@
-# ipo-trade-management
+# laravel_docker_config
 
 ## 環境構築
 
@@ -13,7 +13,4 @@ CONTAINER ID   IMAGE                            COMMAND                   CREATE
 50910a7b1167   redis:alpine                     "docker-entrypoint.s…"   2 minutes ago    Up 2 minutes    0.0.0.0:16379->6379/tcp             ipo-redis
 ```
 
-- http://localhost/ にアクセス
-- 下記画面が表示されたら成功
-
-![picture](src/ipo-app/resources/images/laravel_top_view.png)
+- http://localhost/ にアクセスできたら成功

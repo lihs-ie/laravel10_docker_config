@@ -1,28 +1,29 @@
 version: "3"
 services:
-  crm-nginx:
-    container_name: "crm-nginx"
+  inginx:
+    container_name: "nginx"
     build:
       context: ./docker/nginx
     depends_on:
-      - crm-app
+      - app
     ports:
       - 80:80
     volumes:
       - ./src:/src
       - ./docker/nginx/logs:/logs
 
-  crm-app:
-    container_name: "crm-app"
+  app:
+    container_name: app
     build:
       context: ./docker/app
     depends_on:
-      - crm-mysql
+      - mysql
     volumes:
       - ./src:/src
       - ./docker/app/php.ini:/usr/local/etc/app/php.ini
 
-  crm-mysql:
+  mysql:
+    container_name: db
     image: mysql:8.0
     environment:
       MYSQL_DATABASE:
@@ -33,8 +34,8 @@ services:
     ports:
       - 3306:3306
 
-  crm-redis:
+  redis:
     image: redis:alpine
-    container_name: "crm-redis"
+    container_name: "redis"
     ports:
       - 16379:6379
